@@ -1,0 +1,49 @@
+.graphEditor_svg {
+    background-color: #FFF;
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+  }
+  
+  .graphEditor_svg:not(.graphEditor_ctrl) {
+    cursor: crosshair;
+  }
+  
+  .graphEditor_nodeText.graphEditor_nodeID {
+    font: 12px sans-serif;
+    font-weight: bold;
+    pointer-events: none;
+    text-anchor: middle;
+  }
+  
+  circle.graphEditor_node {
+    cursor: pointer;
+    stroke-width: 1.5px;
+  }
+  
+  circle.graphEditor_node.graphEditor_reflexive {
+    stroke: #000 !important;
+    stroke-width: 2.5px;
+  }
+  
+  path.graphEditor_edge {
+    cursor: pointer;
+    fill: none;
+    stroke: #000;
+    stroke-width: 4px;
+  }
+  
+  path.graphEditor_edge.graphEditor_dragline {
+    pointer-events: none;
+  }
+  
+  path.graphEditor_edge.graphEditor_selected {
+    stroke-dasharray: 10,2;
+  }
+  
+  path.graphEditor_edge.graphEditor_hidden {
+    stroke-width: 0;
+  }
