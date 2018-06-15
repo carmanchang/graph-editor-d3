@@ -13,7 +13,7 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length}); //å…±äº
 
 module.exports = {
     entry: {
-        app: './src/main.js'
+        app: './src/app.js'
     },
     output: {
         filename: 'js/[name].[hash].js',
@@ -22,20 +22,24 @@ module.exports = {
         publicPath:"/"
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json']
+        extensions: ['.js', '.vue', '.json','.styl']
     },    
     module: {
         noParse: /es6-promise\.js$/,
         rules: [
-            {
-                test: /\.vue$/,
-                loader: 'vue-loader',
-                options: config.vueConfig
-            },
+            // {
+            //     test: /\.vue$/,
+            //     loader: 'vue-loader',
+            //     options: config.vueConfig
+            // },
             {
                 test: /\.js$/,
                 loader: ['happypack/loader?id=babel'],
                 exclude: /node_modules/
+            },
+            {
+                test: /\.styl$/, 
+                use: ['style-loader','css-loader', 'stylus-loader']
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
