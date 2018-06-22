@@ -1,9 +1,43 @@
 <html>
+
 <head>
-    <title>D3.js Graph Editor</title>
-    
+    <title>Node Editor</title>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alight@0.14.0/alight.debug.js"></script>
+    <!--- //angularlight.org/bin/ -->
+    <!-- <script src="d3-node-editor.js"></script>
+    <link href="d3-node-editor.css" rel="stylesheet"> -->
+    <style>
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+        }
+        
+        #nodeEditor {
+            height: 100% !important
+        }
+
+        .connections .connection.output-number {
+            stroke: #96b38a;
+        }
+
+        .socket.action {
+            background: #96b38a
+        }
+
+        .socket.data {
+            background: #241a4b
+        }
+    </style>
+
 </head>
+
 <body>
-    <div id="nodeEditor"></div>
+    <div class="container">
+        <div class="node-editor" id="nodeEditor"></div>
+    </div>
+
 </body>
+
 </html>

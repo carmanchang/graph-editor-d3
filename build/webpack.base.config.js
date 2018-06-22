@@ -13,16 +13,16 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length}); //å…±äº
 
 module.exports = {
     entry: {
-        app: './src/app.js'
+        app: './src/main.js'
     },
     output: {
         filename: 'js/[name].[hash].js',
         path: path.resolve(__dirname, '../dist'),
         chunkFilename: 'js/[name].[hash].chunk.js',
-        publicPath:"/"
+        publicPath:"/dist"
     },
     resolve: {
-        extensions: ['.js', '.vue', '.json','.styl']
+        extensions: ['.js', '.vue', '.json','.styl','.pug']
     },    
     module: {
         noParse: /es6-promise\.js$/,
@@ -34,12 +34,33 @@ module.exports = {
             // },
             {
                 test: /\.js$/,
-                loader: ['happypack/loader?id=babel'],
-                exclude: /node_modules/
+                // loader: ['happypack/loader?id=babel'],
+                loader:'babel-loader',
+                exclude: /node_modules/,
+                options: {
+                    presets: ['es2015', 'react','stage-0'],
+                    plugins:[
+                        'transform-runtime',
+                        "transform-decorators-legacy",
+                        "typecheck",
+                    "syntax-flow",
+                    "transform-flow-strip-types",
+                    "transform-regenerator",
+                    "transform-object-rest-spread"]
+                }
             },
             {
                 test: /\.styl$/, 
                 use: ['style-loader','css-loader', 'stylus-loader']
+            },
+            {
+                test: /\.(css|sass|scss)$/, 
+                use: ['style-loader','css-loader', 'sass-loader']
+            },
+            {
+                test: /\.pug$/, 
+                // use: ['html-loader','pug-html-loader']
+                use: ['pug-loader']
             },
             {
                 test: /\.(png|jpg|gif|svg)$/,
@@ -52,12 +73,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new HappyPack({
-            id:'babel',
-            threads: 4,
-            threadPool: happyThreadPool,
-            loaders:['babel-loader?cacheDirectory']
-        })
+        // new HappyPack({
+        //     id:'babel',
+        //     threads: 4,
+        //     threadPool: happyThreadPool,
+        //     loaders:['babel-loader?cacheDirectory']
+        // })
     ],
     performance: {
         hints: false

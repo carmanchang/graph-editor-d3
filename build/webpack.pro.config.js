@@ -17,7 +17,7 @@ base.plugins = (base.plugins || []).concat([
             filename: "css/style.[contenthash].css",
             allChunks: true
         }),
-        new CopyWebpackPlugin([{ from: 'static', to: 'static' },{ from: 'src/assets', to: 'src/assets' }]),
+        new CopyWebpackPlugin([{ from: 'src/assets', to: 'src/assets' }]),
 
         new webpack.DefinePlugin({
             "process.env.NODE_ENV": JSON.stringify('production')
